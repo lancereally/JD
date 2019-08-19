@@ -22,12 +22,15 @@
   <select id="selectAccByEmail" resultType="java.lang.Integer" parameterType="java.lang.String">
         select count(*) from account where acc_email = #{accEmail}
   </select>
-  <insert id="insertAcc" parameterType="org.lanqiao.myjd.entity.Account">
+  <insert id="insertAcc" parameterType="org.lanqiao.myjd.entity.Account" useGeneratedKeys="true" keyProperty="accId">
     insert into account(acc_name,acc_password,acc_email,acc_phone) values (#{accName},#{accPassword},#{accEmail},#{accPhone})
   </insert>
   <update id="updateAccUsersid" parameterType="org.lanqiao.myjd.entity.UsersVo">
     update account set users_id=#{users.usersId} where acc_id = #{accId}
   </update>
+  <select id="selectAccIdByName" resultType="java.lang.Integer" parameterType="java.lang.String">
+    select acc_id from account where acc_name = #{accName}
+  </select>
 
 
 

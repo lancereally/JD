@@ -9,7 +9,8 @@ public interface AccountService {
     public boolean selectAccByName(String accName);
     public boolean selectAccByEmail(String accEmail);
 //    public boolean updateAccUsersId(String accName,int usersId);
-    public int insertAcc(Account account);
+    public boolean insertAcc(Account account);
+    public int selectAccIdByName(String accName);
     Account checkAccount(String input, String password);
     String getAccName(String accId);
 }

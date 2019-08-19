@@ -2,9 +2,11 @@
 
 #footer {
     height: 400px;
-    width: 1190px;
+
+    width: 100%;
     background-color: #ffffff;
-    margin: auto;
+    margin: 0 auto;
+
 }
 
 #service-2014 {
@@ -18,7 +20,8 @@
 }
 
 #service-2014 dl.fore5 {
-    width: 100px
+    width: 100px;
+
 }
 
 #service-2014 dt {

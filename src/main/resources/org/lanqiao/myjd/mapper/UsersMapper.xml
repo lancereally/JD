@@ -9,6 +9,7 @@
     <result column="users_address" property="usersAddress" jdbcType="VARCHAR" />
     <result column="users_postid" property="usersPostid" jdbcType="INTEGER" />
 
+
     <association property="account" resultMap="AccountResultMap"></association>
 
   </resultMap>
@@ -56,8 +57,12 @@
   </select>
 
 
-
-
+  <select id="getAddress" resultMap="UsersResultMap" parameterType="java.lang.Integer" >
+    select
+    users_address
+    from users
+    where users_id = #{usersId,jdbcType=INTEGER}
+  </select>
 
 
   <insert id="insert" parameterType="org.lanqiao.myjd.entity.Users" >

@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="css/base.css">
     <link rel="stylesheet" type="text/css" href="css/login.css">
     <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/jquery.validate.js"></script>
     <script src="js/jquery.validate.regex.js"></script>
     <script>
         $(function () {
@@ -18,7 +18,7 @@
                     },
                     nloginpwd:{
                         required: true,
-                        regex:/^\w{6,20}$/
+                        regex:/^\w{8,20}$/
                     }
                 },
                 messages: {
@@ -45,13 +45,16 @@
                                 location.href = "index.html";
                             }else {
                                 $(".msg-error span").remove();
-                                $(".msg-error").removeClass("hide").append("<span>登录失败，请检查输入的账户信息！</span>");
+                                $(".msg-error").removeClass("hide").append("<span>登录失败，请检查输入的账号密码是否正确！</span>");
                                 $("#loginname").val("");
                                 $("#nloginpwd").val("");
                             }
                         },
                         error : function () {
-                            alert("提交失败");
+                            $(".msg-error span").remove();
+                            $(".msg-error").removeClass("hide").append("<span>登录请求失败，请尝试重新登录</span>");
+                            $("#loginname").val("");
+                            $("#nloginpwd").val("");
                         }
                     })
                 }
@@ -170,7 +173,7 @@
                     </li>
                     <li class="extra-r">
                         <div>
-                            <div class="regist-link"><a href="" target="_blank"><b></b>立即注册</a></div>
+                            <div class="regist-link"><a href="Register.html" target="_blank"><b></b>立即注册</a></div>
                         </div>
                     </li>
                 </ul>

@@ -8,7 +8,8 @@ $(function () {
     $("#info_form").validate({
         rules: {
             chk_name: {
-                required: true
+                required: true,
+                regex: /^[\u4e00-\u9fa5]{2,20}$/
             },
             chk_card: {
                 required: true,
@@ -24,7 +25,8 @@ $(function () {
         },
         messages: {
             chk_name: {
-                required: "姓名不能为空"
+                required: "姓名不能为空",
+                regex:"姓名为2-20个汉字"
             },
             chk_card: {
                 required: "身份证不能为空",
@@ -81,7 +83,7 @@ $(function () {
     //插入的ajax
 
     $("#chk_button").click(function () {
-        var UsersVo = {"accName":$.cookie("accName"),"users":{
+        var UsersVo = {"accId":$.cookie("accId"),"users":{
                 'usersRealname':$("#chk_name").val(),
                 'usersCardid':$("#chk_card").val(),
                 'usersSex':$("input[name='chk_sex']:checked").val(),

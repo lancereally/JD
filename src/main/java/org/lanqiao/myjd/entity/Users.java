@@ -1,10 +1,5 @@
 package org.lanqiao.myjd.entity;
 
-//<<<<<<< HEAD
-import java.util.Set;
-
-//=======
-//>>>>>>> d08824d4d19ccb2f12ed2056534f862d1d80c0e6
 public class Users {
     private Integer usersId;
 
@@ -27,6 +22,7 @@ public class Users {
     public void setAccount(Account account) {
         this.account = account;
     }
+
 
     public Integer getUsersId() {
         return usersId;
@@ -75,8 +71,6 @@ public class Users {
     public void setUsersPostid(Integer usersPostid) {
         this.usersPostid = usersPostid;
     }
-//<<<<<<< HEAD
-//=======
 
     @Override
     public String toString() {
@@ -90,5 +84,6 @@ public class Users {
                 ", account=" + account +
                 '}';
     }
-//>>>>>>> d08824d4d19ccb2f12ed2056534f862d1d80c0e6
+
+
 }

@@ -9,8 +9,18 @@
     <script src="js/jquery.validate.js"></script>
     <script src="js/jquery.validate.regex.js"></script>
     <script src="js/jquery.cookie.js"></script>
-    <script src="js/check.js"></script>
+<!--    <script src="js/check.js"></script>-->
+    <script>
+        $(function () {
+            var id = $.cookie('accId');
+            if(id === undefined){
+                location.href = "login.html";
+            }
+        })
+
+    </script>
     <script src="js/vue.js"></script>
+
     <script src="js/checkinfo.js"></script>
 </head>
 <body>
@@ -49,11 +59,11 @@
                 <label>性 别</label>
                 <div class="choice">
                     <div class="choice sex">
-                        <input type="radio" name="chk_sex" id="chk_sex1" value="man">
+                        <input type="radio" name="chk_sex" id="chk_sex1" value="男">
                         <p class="sex_tag">男</p>
                     </div>
                     <div class="choice sex">
-                        <input type="radio" name="chk_sex" id="chk_sex2" value="woman">
+                        <input type="radio" name="chk_sex" id="chk_sex2" value="女">
                         <p class="sex_tag">女</p>
                     </div>
 

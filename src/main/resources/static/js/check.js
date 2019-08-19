@@ -1,4 +1,4 @@
 var id = $.cookie('accId');
-if(id === "undefined"){
+if(id === undefined){
     location.href = "login.html";
 }

@@ -150,6 +150,18 @@ $(function () {
                 },
                 dataType:"text",
                 success:function (data) {
+                    $.ajax({
+                        url:"/register/selectAccId",
+                        type:"post",
+                        data:{
+                            'accName':$("#reg_name").val(),
+                        },
+                        dataType:"text",
+                        success:function (data) {
+                            alert(data)
+                        }
+
+                    })
                     if(data=="true"){
                         $("#reg_main").css("display", "none");
                         $("#reg_over").css("display", "inline");

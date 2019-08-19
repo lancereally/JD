@@ -35,13 +35,17 @@ public class AccountController {
     }
 
     @RequestMapping("/register/insertAccount")
-    public int insertAcc(HttpServletResponse response, Account account) {
-        Cookie cookie = new Cookie("accId", account.getAccId()+"");
-        cookie.setPath("/");
-        response.addCookie(cookie);
+    public boolean insertAcc( Account account) {
+
         return accountService.insertAcc(account);
     }
-
+    @RequestMapping("/register/selectAccId")
+    public int selectAccIdByName(HttpServletResponse response,String accName){
+        Cookie cookie = new Cookie("accId", accountService.selectAccIdByName(accName)+"");
+        cookie.setPath("/");
+        response.addCookie(cookie);
+        return accountService.selectAccIdByName(accName);
+    }
 
     //登录验证账户
     @RequestMapping("/login/checkAccount")

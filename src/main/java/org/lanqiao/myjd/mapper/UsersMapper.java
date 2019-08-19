@@ -1,6 +1,7 @@
 package org.lanqiao.myjd.mapper;
 
 import org.lanqiao.myjd.entity.Users;
+
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public interface UsersMapper {
     //查询身份证号是否存在
     int selectUsersByCard(String usersCardid);
 
+
     int deleteByPrimaryKey(Integer usersId);
 
     int insert(Users record);
@@ -24,13 +26,14 @@ public interface UsersMapper {
 
     Users selectByPrimaryKey(Integer usersId);
 
-
     List<Users> pagingQueryUsers(int offSet);
 
     int getUsersCount();
 
-
     int updateByPrimaryKeySelective(Users record);
 
     int updateByPrimaryKey(Users record);
+
+    public Users getAddress(Integer usersId);
+
 }

@@ -5,9 +5,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@MapperScan("org.lanqiao.myjd.mapper")
+
 @EnableTransactionManagement
 @SpringBootApplication
+@MapperScan("org.lanqiao.myjd.mapper")
+
 public class MyjdApplication {
 
     public static void main(String[] args) {

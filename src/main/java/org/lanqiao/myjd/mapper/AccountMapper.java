@@ -19,6 +19,7 @@ public interface AccountMapper {
 
     int insertAcc(Account account);
 
+    int selectAccIdByName(String accName);
 
     int deleteByPrimaryKey(Integer accId);
 

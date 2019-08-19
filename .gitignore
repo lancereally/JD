@@ -30,7 +30,11 @@ build/
 ### VS Code ###
 .vscode/
 
+<<<<<<< HEAD
 ### yml xml ###
+=======
+### MyBatis ###
+>>>>>>> d08824d4d19ccb2f12ed2056534f862d1d80c0e6
 *.yml
 *.properties
 generatorConfig.xml

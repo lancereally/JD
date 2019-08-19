@@ -15,6 +15,10 @@ public class InterceptorConfig {
         interceptorRegistration.excludePathPatterns("/checkemail");
         interceptorRegistration.excludePathPatterns("/insertAccount");
 
+        interceptorRegistration.excludePathPatterns("/login/checkAccount");
+        interceptorRegistration.excludePathPatterns("/index.html");
+
+
         interceptorRegistration.excludePathPatterns("/css/*.css");
         interceptorRegistration.excludePathPatterns("/images/register/*.jpg");
         interceptorRegistration.excludePathPatterns("/images/register/*.png");
@@ -22,4 +26,6 @@ public class InterceptorConfig {
 
 
     }
+
 }
+

@@ -1,7 +1,10 @@
 package org.lanqiao.myjd.entity;
 
+//<<<<<<< HEAD
 import java.util.Set;
 
+//=======
+//>>>>>>> d08824d4d19ccb2f12ed2056534f862d1d80c0e6
 public class Users {
     private Integer usersId;
 
@@ -72,4 +75,20 @@ public class Users {
     public void setUsersPostid(Integer usersPostid) {
         this.usersPostid = usersPostid;
     }
+//<<<<<<< HEAD
+//=======
+
+    @Override
+    public String toString() {
+        return "Users{" +
+                "usersId=" + usersId +
+                ", usersRealname='" + usersRealname + '\'' +
+                ", usersCardid='" + usersCardid + '\'' +
+                ", usersSex='" + usersSex + '\'' +
+                ", usersAddress='" + usersAddress + '\'' +
+                ", usersPostid=" + usersPostid +
+                ", account=" + account +
+                '}';
+    }
+//>>>>>>> d08824d4d19ccb2f12ed2056534f862d1d80c0e6
 }

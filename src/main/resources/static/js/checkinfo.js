@@ -24,7 +24,7 @@ $(function () {
         },
         messages: {
             chk_name: {
-                required: "用户名不能为空"
+                required: "姓名不能为空"
             },
             chk_card: {
                 required: "身份证不能为空",

@@ -1,5 +1,4 @@
-
-var name = $.cookie('accName');
-if(name === "undefined"){
-    location.href = "Register.html";
+var id = $.cookie('accId');
+if(id === "undefined"){
+    location.href = "login.html";
 }

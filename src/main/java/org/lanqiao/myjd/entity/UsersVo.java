@@ -2,7 +2,7 @@ package org.lanqiao.myjd.entity;
 
 public class UsersVo {
     private Users users;
-    private String accName;
+    private Integer accId;
 
     public Users getUsers() {
         return users;
@@ -12,11 +12,11 @@ public class UsersVo {
         this.users = users;
     }
 
-    public String getAccName() {
-        return accName;
+    public Integer getAccId() {
+        return accId;
     }
 
-    public void setAccName(String accName) {
-        this.accName = accName;
+    public void setAccId(Integer accId) {
+        this.accId = accId;
     }
 }

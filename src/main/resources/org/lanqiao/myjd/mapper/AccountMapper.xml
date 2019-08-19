@@ -6,13 +6,12 @@
     <result column="acc_name" property="accName" jdbcType="VARCHAR" />
     <result column="acc_password" property="accPassword" jdbcType="VARCHAR" />
     <result column="acc_createdate" property="accCreatedate" jdbcType="TIMESTAMP" />
+
     <result column="users_id" property="usersId" jdbcType="INTEGER" />
     <result column="acc_email" property="accEmail" jdbcType="VARCHAR" />
     <result column="acc_phone" property="accPhone" jdbcType="DECIMAL" />
   </resultMap>
-  <sql id="Base_Column_List" >
-    acc_id, acc_name, acc_password, acc_createdate, users_id, acc_email, acc_phone
-  </sql>
+
   <select id="selectAccByPhone" resultType="java.lang.Integer" parameterType="java.lang.Long">
         select count(*) from account where acc_phone = #{accPhone}
   </select>
@@ -26,15 +25,25 @@
   <insert id="insertAcc" parameterType="org.lanqiao.myjd.entity.Account">
     insert into account(acc_name,acc_password,acc_email,acc_phone) values (#{accName},#{accPassword},#{accEmail},#{accPhone})
   </insert>
-
   <update id="updateAccUsersid" parameterType="org.lanqiao.myjd.entity.UsersVo">
-    update account set users_id=#{users.usersId} where acc_name = #{accName}
+    update account set users_id=#{users.usersId} where acc_id = #{accId}
   </update>
 
 
+
+  <sql id="Account_Column_List" >
+    acc_id, acc_name, acc_password, acc_createdate, acc_email, acc_phone, users_id
+  </sql>
+  <select id="selectByLogin" resultMap="AccountResultMap" parameterType="java.lang.String">
+    select * from account where (acc_name = #{str} or acc_email = #{str} or acc_phone = #{str}) and acc_password = #{password}
+  </select>
+  <select id="getAccName" resultType="java.lang.String" parameterType="java.lang.Integer">
+    select acc_name from account where acc_id = #{accId}
+  </select>
   <select id="selectByPrimaryKey" resultMap="AccountResultMap" parameterType="java.lang.Integer" >
     select 
-    <include refid="Base_Column_List" />
+    <include refid="Account_Column_List" />
+
     from account
     where acc_id = #{accId,jdbcType=INTEGER}
   </select>
@@ -44,7 +53,7 @@
   </delete>
   <insert id="insert" parameterType="org.lanqiao.myjd.entity.Account" >
     insert into account (acc_id, acc_name, acc_password, 
-      acc_createdate, users_id, acc_email, 
+      acc_createdate, users_id, acc_email,
       acc_phone)
     values (#{accId,jdbcType=INTEGER}, #{accName,jdbcType=VARCHAR}, #{accPassword,jdbcType=VARCHAR}, 
       #{accCreatedate,jdbcType=TIMESTAMP}, #{usersId,jdbcType=INTEGER}, #{accEmail,jdbcType=VARCHAR}, 
@@ -65,15 +74,22 @@
       <if test="accCreatedate != null" >
         acc_createdate,
       </if>
+
       <if test="usersId != null" >
         users_id,
       </if>
+
       <if test="accEmail != null" >
         acc_email,
       </if>
       <if test="accPhone != null" >
         acc_phone,
       </if>
+
+      <if test="usersId != null" >
+        users_id,
+      </if>
+
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="accId != null" >
@@ -88,15 +104,22 @@
       <if test="accCreatedate != null" >
         #{accCreatedate,jdbcType=TIMESTAMP},
       </if>
+
       <if test="usersId != null" >
         #{usersId,jdbcType=INTEGER},
       </if>
+
       <if test="accEmail != null" >
         #{accEmail,jdbcType=VARCHAR},
       </if>
       <if test="accPhone != null" >
         #{accPhone,jdbcType=DECIMAL},
       </if>
+
+      <if test="usersId != null" >
+        #{usersId,jdbcType=INTEGER},
+      </if>
+
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.myjd.entity.Account" >
@@ -111,15 +134,22 @@
       <if test="accCreatedate != null" >
         acc_createdate = #{accCreatedate,jdbcType=TIMESTAMP},
       </if>
+
       <if test="usersId != null" >
         users_id = #{usersId,jdbcType=INTEGER},
       </if>
+
       <if test="accEmail != null" >
         acc_email = #{accEmail,jdbcType=VARCHAR},
       </if>
       <if test="accPhone != null" >
         acc_phone = #{accPhone,jdbcType=DECIMAL},
       </if>
+
+      <if test="usersId != null" >
+        users_id = #{usersId,jdbcType=INTEGER},
+      </if>
+
     </set>
     where acc_id = #{accId,jdbcType=INTEGER}
   </update>
@@ -128,9 +158,11 @@
     set acc_name = #{accName,jdbcType=VARCHAR},
       acc_password = #{accPassword,jdbcType=VARCHAR},
       acc_createdate = #{accCreatedate,jdbcType=TIMESTAMP},
+
       users_id = #{usersId,jdbcType=INTEGER},
       acc_email = #{accEmail,jdbcType=VARCHAR},
       acc_phone = #{accPhone,jdbcType=DECIMAL}
+
     where acc_id = #{accId,jdbcType=INTEGER}
   </update>
 </mapper>

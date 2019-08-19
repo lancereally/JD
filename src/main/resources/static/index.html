@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script>
+        $(function () {
+            //登录状态
+            var loginCookie = $.cookie("accId");
+            if (loginCookie !== undefined) {
+                $.ajax({
+                    url:"/login/getAccName",
+                    type:"post",
+                    dataType:"text",
+                    data:{
+                        accId: loginCookie
+                    },
+                    success : function (accName) {
+                        $("#login").html("您好！"+accName);
+                        $("#uiBox").children().eq(0).html(accName);
+                    },
+                    error:function (accName) {
+                        alert(accName)
+                    }
+                });
+            }
+
+            //搜索信息传递
+            $("#searchBtn").click(function () {
+                sessionStorage.setItem("keyWord",$("#content").val());
+                window.location.href="search.html";
+            });
+
+            //导航栏图片轮播
+            setTimeout("changeImg()",3000);
+
+            //顶部浮动搜索栏
+            $(document).scroll(function () {
+                var scrollH = $(this).scrollTop();
+                if (scrollH >= 300){
+                    $("#float_top").fadeIn(500);
+                }else{
+                    $("#float_top").fadeOut(500);
+                }
+            })
+        });
+        var i = -1;
+        var imgs = new Array("pic1_1.png","pic1_2.png","pic1_3.png");
+        function changeImg() {
+            i++;
+            if (i == imgs.length) {
+                i = 0;
+            }
+            $("#pic1").attr("src","images/"+imgs[i]);
+            setTimeout("changeImg()",3000);
+        }
+    </script>
+</head>
+<body>
+<div id="top">
+    <div id="shortcut">
+        <div class="w">
+            <div id="nav1">
+                <ul>
+                    <li class="iconfont iconfont-location"></li>
+                    <li><span data-id="16" title="福建">福建</span></li>
+                </ul>
+            </div>
+            <div id="nav2">
+                <ul id="l1">
+                    <li><div class="box"><a href="login.html" id="login">您好，请登录</a></div></li>
+                    <li><div class="box"><a id="register" href="Register.html">免费注册</a></div></li>
+                    <li class="spacer"></li>
+                    <li><div class="box"><a>我的订单</a></div></li>
+                    <li class="spacer"></li>
+                    <li><div class="box" ><a href="checkinfo.html">身份验证</a></div></li>
+                    <li class="spacer"></li>
+                    <li><div class="box"><a>京东会员</a></div></li>
+                    <li class="spacer"></li>
+                    <li><div class="box"><a id="eb">企业采购</a></div></li>
+                    <li class="spacer"></li>
+                    <li><div class="box"><a>客户服务</a></div></li>
+                    <li class="spacer"></li>
+                    <li><div class="box"><a>网站导航</a></div></li>
+                    <li class="spacer"></li>
+                    <li><div class="box"><a>手机京东</a></div></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="header">
+        <div class="w">
+            <div id="logo"></div>
+            <div id="search">
+                <div id="sBox">
+                    <form id="searchForm">
+                        <input type="text" id="content"/>
+                        <button type="button" id="searchBtn">
+                            <i class="iconfont"></i>
+                        </button>
+                    </form>
+                </div>
+                <div id="cart">
+                    <i class="iconfont"></i>
+                    <i id="shopping-amount">0</i>
+                    <a>我的购物车</a>
+                </div>
+                <div id="hotWords">
+                    <a id="hw1">盛夏焕新装</a>
+                    <a>正品好药</a>
+                    <a>空调钜惠</a>
+                    <a>开关5折</a>
+                    <a>美妆新品</a>
+                    <a>鞋靴清仓</a>
+                    <a>每100-50</a>
+                    <a>纸品生活</a>
+                    <a>养殖消毒</a>
+                </div>
+            </div>
+            <div id="appCodeBox"><div id="appCode"></div></div>
+            <div id="navItems">
+                <a id="ni1">秒杀</a>
+                <a id="ni2">优惠券</a>
+                <a>PLUS会员</a>
+                <a>品牌闪购</a>
+                <a>拍卖</a>
+                <a>京东时尚</a>
+                <a>京东超市</a>
+                <a>京东生鲜</a>
+                <a>海囤全球</a>
+                <a>京东金融</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="classNav">
+    <div class="w">
+        <div id="classNav_c1">
+            <ul id="classList">
+                <li class="ci"><a>家用电器</a></li>
+                <li class="ci"><a>手机</a> / <a>运营商</a> / <a>数码</a></li>
+                <li class="ci"><a>电脑</a> / <a>办公</a></li>
+                <li class="ci"><a>家具</a> / <a>家居</a> / <a>家装</a> / <a>厨具</a></li>
+                <li class="ci"><a>艺术</a> / <a>鲜花</a> / <a>农资绿植</a></li>
+                <li class="ci"><a>手机</a> / <a>运营商</a> / <a>数码</a></li>
+                <li class="ci"><a>手机</a> / <a>运营商</a> / <a>数码</a></li>
+                <li class="ci"><a>手机</a> / <a>运营商</a> / <a>数码</a></li>
+                <li class="ci"><a>手机</a> / <a>运营商</a> / <a>数码</a></li>
+                <li class="ci"><a>手机</a> / <a>运营商</a> / <a>数码</a></li>
+                <li class="ci"><a>手机</a> / <a>运营商</a> / <a>数码</a></li>
+                <li class="ci"><a>手机</a> / <a>运营商</a> / <a>数码</a></li>
+                <li class="ci"><a>手机</a> / <a>运营商</a> / <a>数码</a></li>
+                <li class="ci"><a>手机</a> / <a>运营商</a> / <a>数码</a></li>
+                <li class="ci"><a>手机</a> / <a>运营商</a> / <a>数码</a></li>
+                <li class="ci"><a>手机</a> / <a>运营商</a> / <a>数码</a></li>
+                <li class="ci"><a>手机</a> / <a>运营商</a> / <a>数码</a></li>
+                <li class="ci"><a>手机</a> / <a>运营商</a> / <a>数码</a></li>
+            </ul>
+        </div>
+        <div id="classNav_c2">
+            <div id="picBox1">
+                <img id="pic1" src="images/pic1_1.png" alt="推广图片">
+            </div>
+            <div id="picBox2">
+                <div class="pb_item">
+                    <img src="images/pic2.png" alt="推广图片">
+                </div>
+                <div class="pb_item">
+                    <img src="images/pic3.png" alt="推广图片">
+                </div>
+                <div class="pb_item">
+                    <img src="images/pic4.png" alt="推广图片">
+                </div>
+            </div>
+        </div>
+        <div id="classNav_c3">
+            <div id="c3_row1">
+                <div id="userItem">
+                    <div id="headPicBox">
+                        <a id="hpLink">
+                            <img id="hp" alt="用户头像" src="images/userhp.png">
+                        </a>
+                    </div>
+                    <div id="uiBox">
+                        <a>Hi~欢迎逛京东！</a>
+                        <p>
+                            <a class="uia" href="login.html">登录</a>
+                            &nbsp;|&nbsp;
+                            <a class="uia">注册</a>
+                        </p>
+                    </div>
+                </div>
+                <div id="userSelect">
+                    <a class="us">新人福利</a>
+                    <a class="us" id="s2">PLUS会员</a>
+                </div>
+            </div>
+            <div class="divLine"></div>
+            <div id="c3_row2">
+                <div class="news_hd" aria-label="京东快报">
+                    <h5 class="news_tit">京东快报</h5>
+                    <a href="" target="_blank" class="news_more" >更多 <i class="iconfont"></i></a>
+                </div>
+                <ul class="news_list">
+                    <li class="news_item"><a href="" class="news_link"><span class="news_tag">最新</span>小米10：骁龙865+四摄+升降屏+100W快充，价香</a></li>
+                    <li class="news_item"><a href="" class="news_link"><span class="news_tag">推荐</span>华为麒麟990新突破！全新芯片架构横空出世</a></li>
+                    <li class="news_item"><a href="" class="news_link"><span class="news_tag">热门</span>iPhone 11国行售价曝光，XR2也相应而出</a></li>
+                    <li class="news_item"><a href="" class="news_link"><span class="news_tag">最新</span>华为鸿蒙系统界面首曝，比安卓系统流畅60％</a></li></ul>
+            </div>
+            <div class="divLine"></div>
+            <div id="c3_row3">
+                <ul id="service_list">
+                    <li class="service_item">
+                        <a href="">
+                            <i class="service_icon">
+                                <img class="service_ico_img" src="images/service_icon1.png">
+                            </i>
+                            <span class="service_txt">话费</span>
+                        </a>
+                    </li>
+                    <li class="service_item">
+                        <a href="">
+                            <i class="service_icon">
+                                <img class="service_ico_img" src="images/service_icon1.png">
+                            </i>
+                            <span class="service_txt">话费</span>
+                        </a>
+                    </li>
+                    <li class="service_item">
+                        <a href="">
+                            <i class="service_icon">
+                                <img class="service_ico_img" src="images/service_icon1.png">
+                            </i>
+                            <span class="service_txt">话费</span>
+                        </a>
+                    </li>
+                    <li class="service_item">
+                        <a href="">
+                            <i class="service_icon">
+                                <img class="service_ico_img" src="images/service_icon1.png">
+                            </i>
+                            <span class="service_txt">话费</span>
+                        </a>
+                    </li>
+                    <li class="service_item">
+                        <a href="">
+                            <i class="service_icon">
+                                <img class="service_ico_img" src="images/service_icon1.png">
+                            </i>
+                            <span class="service_txt">话费</span>
+                        </a>
+                    </li>
+                    <li class="service_item">
+                        <a href="">
+                            <i class="service_icon">
+                                <img class="service_ico_img" src="images/service_icon1.png">
+                            </i>
+                            <span class="service_txt">话费</span>
+                        </a>
+                    </li>
+                    <li class="service_item">
+                        <a href="">
+                            <i class="service_icon">
+                                <img class="service_ico_img" src="images/service_icon1.png">
+                            </i>
+                            <span class="service_txt">话费</span>
+                        </a>
+                    </li>
+                    <li class="service_item">
+                        <a href="">
+                            <i class="service_icon">
+                                <img class="service_ico_img" src="images/service_icon1.png">
+                            </i>
+                            <span class="service_txt">话费</span>
+                        </a>
+                    </li>
+                    <li class="service_item">
+                        <a href="">
+                            <i class="service_icon">
+                                <img class="service_ico_img" src="images/service_icon1.png">
+                            </i>
+                            <span class="service_txt">话费</span>
+                        </a>
+                    </li>
+                    <li class="service_item">
+                        <a href="">
+                            <i class="service_icon">
+                                <img class="service_ico_img" src="images/service_icon1.png">
+                            </i>
+                            <span class="service_txt">话费</span>
+                        </a>
+                    </li>
+                    <li class="service_item">
+                        <a href="">
+                            <i class="service_icon">
+                                <img class="service_ico_img" src="images/service_icon1.png">
+                            </i>
+                            <span class="service_txt">话费</span>
+                        </a>
+                    </li>
+                    <li class="service_item">
+                        <a href="">
+                            <i class="service_icon">
+                                <img class="service_ico_img" src="images/service_icon1.png">
+                            </i>
+                            <span class="service_txt">话费</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="secKill">
+    <div class="w">
+        <div id="countdown_box">
+            <a id="secKillLink" href="">
+            <div id="countdown_title">京东秒杀</div>
+            <div id="countdown_desc"><strong>14:00</strong>点场 倒计时</div>
+            <span id="cdTimer">
+                <span class="timer_unit timer_unit_hour">00</span>
+                <span class="timer_unit timer_unit_minute">00</span>
+                <span class="timer_unit timer_unit_second">00</span>
+            </span>
+            </a>
+        </div>
+        <div id="secKillList">
+            <a class="slider_item">
+                <div class="slider_item_image">
+                    <img src="images/skitem.png" class="skimg" alt="skimage">
+                </div>
+                <h6 class="seckill_item_name">Apple Watch Series 4苹果智能手表（GPS款 44毫米银色铝金属表壳 海贝色回环式运动表带 MU6C2CH/A)</h6>
+                <div class="seckill_price">
+                    <span class="seckill_price_now"><i>¥</i><span>3188.00</span></span>
+                    <span class="seckill_price_origin"><i>¥</i><span>3499.00</span></span>
+                </div>
+            </a>
+            <a class="slider_item">
+                <div class="slider_item_image">
+                    <img src="images/skitem.png" class="skimg" alt="skimage">
+                </div>
+                <h6 class="seckill_item_name">Apple Watch Series 4苹果智能手表（GPS款 44毫米银色铝金属表壳 海贝色回环式运动表带 MU6C2CH/A)</h6>
+                <div class="seckill_price">
+                    <span class="seckill_price_now"><i>¥</i><span>3188.00</span></span>
+                    <span class="seckill_price_origin"><i>¥</i><span>3499.00</span></span>
+                </div>
+            </a>
+            <a class="slider_item">
+                <div class="slider_item_image">
+                    <img src="images/skitem.png" class="skimg" alt="skimage">
+                </div>
+                <h6 class="seckill_item_name">Apple Watch Series 4苹果智能手表（GPS款 44毫米银色铝金属表壳 海贝色回环式运动表带 MU6C2CH/A)</h6>
+                <div class="seckill_price">
+                    <span class="seckill_price_now"><i>¥</i><span>3188.00</span></span>
+                    <span class="seckill_price_origin"><i>¥</i><span>3499.00</span></span>
+                </div>
+            </a>
+            <a class="slider_item">
+                <div class="slider_item_image">
+                    <img src="images/skitem.png" class="skimg" alt="skimage">
+                </div>
+                <h6 class="seckill_item_name">Apple Watch Series 4苹果智能手表（GPS款 44毫米银色铝金属表壳 海贝色回环式运动表带 MU6C2CH/A)</h6>
+                <div class="seckill_price">
+                    <span class="seckill_price_now"><i>¥</i><span>3188.00</span></span>
+                    <span class="seckill_price_origin"><i>¥</i><span>3499.00</span></span>
+                </div>
+            </a>
+        </div>
+        <div id="secKillBrand">
+            <img id="skb" src="images/skbrand.png" alt="secKillBrand">
+        </div>
+    </div>
+</div>
+<div id="float_right">
+    <ul>
+        <li><a class="elevator_lk">京东秒杀</a></li>
+        <li class="float_right_line"></li>
+        <li><a class="elevator_lk">特色优选</a></li>
+        <li class="float_right_line"></li>
+        <li><a class="elevator_lk">频道广场</a></li>
+        <li class="float_right_line"></li>
+        <li><a class="elevator_lk">为你推荐</a></li>
+        <li class="float_right_line"></li>
+        <li><a class="elevator_lk" href="#top"><span class="elevator_totop_icon"></span> 顶部</a></li>
+    </ul>
+</div>
+<div id="footer">
+    <iframe id="footerFrame" name="footerFrame" src="footer.html" width="1190" height="400" frameborder="0" scrolling="no"></iframe>
+</div>
+<div id="float_top">
+    <div id="float_top_logo"></div>
+    <div id="search_top_left_float"><input type="text" id="keyword_float"><span></span><img src="images/kuo.png" height="33"></div>
+    <div id="search_top_center_float" class="red"><i class="iconfont font16"></i><i class="ci-count">0</i>我的购物车</div>
+</div>
+</body>
+</html>

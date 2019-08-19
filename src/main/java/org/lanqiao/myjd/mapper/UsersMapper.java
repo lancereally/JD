@@ -3,8 +3,12 @@ package org.lanqiao.myjd.mapper;
 import org.lanqiao.myjd.entity.Users;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface UsersMapper {
+
+
     //插入Users数据
     int insertUsers(Users users);
     //查询名字是否存在
@@ -19,6 +23,12 @@ public interface UsersMapper {
     int insertSelective(Users record);
 
     Users selectByPrimaryKey(Integer usersId);
+
+
+    List<Users> pagingQueryUsers(int offSet);
+
+    int getUsersCount();
+
 
     int updateByPrimaryKeySelective(Users record);
 

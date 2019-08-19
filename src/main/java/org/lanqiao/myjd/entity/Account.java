@@ -72,4 +72,5 @@ public class Account {
     public void setAccPhone(Long accPhone) {
         this.accPhone = accPhone;
     }
+
 }

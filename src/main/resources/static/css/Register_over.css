@@ -63,7 +63,7 @@ a:hover {
 }
 
 #success_msg{
-    height: 155px;
+    height: 205px;
     margin: 0 0 30px;
 }
 #success_msg .success_tag{
@@ -103,7 +103,7 @@ a:hover {
     color: #fefefe;
 }
 #abtn{
-    display: inline-block;
+    display: inline;
     line-height: 52px;
     width: 160px;
     height: 54px;

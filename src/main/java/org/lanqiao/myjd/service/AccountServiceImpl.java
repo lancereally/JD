@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+
 public class AccountServiceImpl implements AccountService {
 
     @Autowired
     AccountMapper accountMapper;
 
     @Override
+
     public boolean selectAccByPhone(long accPhone) {
         return accountMapper.selectAccByPhone(accPhone) < 1 ? true : false;
     }
@@ -27,14 +29,24 @@ public class AccountServiceImpl implements AccountService {
     }
 
 
-
 //    @Override
 //    public boolean updateAccUsersId(String accName,int usersId) {
 //        return accountMapper.updateAccUsersid(accName,usersId)>0?true:false;
 //    }
 
     @Override
-    public boolean insertAcc(Account account) {
-        return accountMapper.insertAcc(account) > 0 ? true : false;
+    public int insertAcc(Account account) {
+        return accountMapper.insertAcc(account);
+
+    }
+
+    public Account checkAccount(String str, String password) {
+        return accountMapper.selectByLogin(str, password);
+    }
+
+    @Override
+    public String getAccName(String accId) {
+        Integer id = Integer.parseInt(accId);
+        return accountMapper.getAccName(id);
     }
 }

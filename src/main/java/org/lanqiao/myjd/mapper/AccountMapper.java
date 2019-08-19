@@ -1,11 +1,14 @@
 package org.lanqiao.myjd.mapper;
 
 import org.lanqiao.myjd.entity.Account;
+
 import org.lanqiao.myjd.entity.UsersVo;
+
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AccountMapper {
+
     int selectAccByPhone(long accPhone);
 
     int selectAccByName(String accName);
@@ -16,6 +19,7 @@ public interface AccountMapper {
 
     int insertAcc(Account account);
 
+
     int deleteByPrimaryKey(Integer accId);
 
     int insert(Account record);
@@ -23,6 +27,10 @@ public interface AccountMapper {
     int insertSelective(Account record);
 
     Account selectByPrimaryKey(Integer accId);
+
+    Account selectByLogin(String str, String password);
+
+    String getAccName(Integer accId);
 
     int updateByPrimaryKeySelective(Account record);
 

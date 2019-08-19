@@ -8,30 +8,24 @@
     <result column="users_sex" property="usersSex" jdbcType="VARCHAR" />
     <result column="users_address" property="usersAddress" jdbcType="VARCHAR" />
     <result column="users_postid" property="usersPostid" jdbcType="INTEGER" />
-    <association property="accountSet" resultMap="AccountResultMap"></association>
+
+    <association property="account" resultMap="AccountResultMap"></association>
+
   </resultMap>
   <resultMap id="AccountResultMap" type="org.lanqiao.myjd.entity.Account" >
     <id column="acc_id" property="accId" jdbcType="INTEGER" />
     <result column="acc_name" property="accName" jdbcType="VARCHAR" />
     <result column="acc_password" property="accPassword" jdbcType="VARCHAR" />
     <result column="acc_createdate" property="accCreatedate" jdbcType="TIMESTAMP" />
+
     <result column="users_id" property="usersId" jdbcType="INTEGER" />
     <result column="acc_email" property="accEmail" jdbcType="VARCHAR" />
     <result column="acc_phone" property="accPhone" jdbcType="DECIMAL" />
   </resultMap>
 
-  <sql id="Base_Column_List" >
-    users_id, users_realName, users_cardid, users_sex, users_address, users_postid
-  </sql>
-
-<!--  <select id="selectUsersByName" resultMap="java.lang.Integer" parameterType="java.lang.String">-->
-<!--    select count(*) from users where users_realName = #{usersRealname}-->
-<!--  </select>-->
-
   <select id="selectUsersByCard" resultType="java.lang.Integer" parameterType="java.lang.String">
     select count(*) from users where users_cardid = #{usersCardid}
   </select>
-
   <insert id="insertUsers" parameterType="org.lanqiao.myjd.entity.UsersVo" useGeneratedKeys="true" keyProperty="usersId">
     insert into users(users_realName,users_cardid,users_sex,users_address,users_postid)
     values (#{usersRealname},#{usersCardid},#{usersSex},#{usersAddress},#{usersPostid})
@@ -39,30 +33,35 @@
 
 
 
+  <sql id="Users_Column_List" >
+    users_id, users_realName, users_cardid, users_sex, users_address, users_postid
+  </sql>
 
-
-
-
-
-
-
-
-
-
-
+<!--Author:Lzc -->
+  <select id="pagingQueryUsers" resultMap="UsersResultMap" parameterType="java.lang.Integer">
+    select * from users limit #{offSet},10
+  </select>
+  <select id="getUsersCount" resultType="java.lang.Integer">
+    select count(*) from users
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    DELETE account,users from account LEFT JOIN users ON users.users_id = account.users_id WHERE users.users_id = #{usersId}
+  </delete>
 
   <select id="selectByPrimaryKey" resultMap="UsersResultMap" parameterType="java.lang.Integer" >
     select 
-    <include refid="Base_Column_List" />
+    <include refid="Users_Column_List" />
     from users
     where users_id = #{usersId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from users
-    where users_id = #{usersId,jdbcType=INTEGER}
-  </delete>
+
+
+
+
+
+
   <insert id="insert" parameterType="org.lanqiao.myjd.entity.Users" >
-    insert into users (users_id, users_realName, users_cardid, 
+    insert into users (users_id, users_realName, users_cardid,
       users_sex, users_address, users_postid
       )
     values (#{usersId,jdbcType=INTEGER}, #{usersRealname,jdbcType=VARCHAR}, #{usersCardid,jdbcType=VARCHAR}, 

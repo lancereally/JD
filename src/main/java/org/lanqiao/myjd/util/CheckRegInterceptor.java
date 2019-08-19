@@ -11,12 +11,14 @@ public class CheckRegInterceptor implements HandlerInterceptor {
         Cookie[] cookies = httpServletRequest.getCookies();
         if (cookies != null && cookies.length > 0) {
             for (Cookie cookie : cookies) {
-                if ("accName".equals(cookie.getName())) {
+                if ("accId".equals(cookie.getName())) {
                     return true;
                 }
             }
         }
-        httpServletResponse.sendRedirect("/Register.html");
+
+        httpServletResponse.sendRedirect("/login.html");
         return false;
     }
 }
+

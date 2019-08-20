@@ -266,21 +266,27 @@
 .t-space{
     width: 140px;
 }
-.t-price{
+.t-price {
     width: 120px;
     padding-right: 40px;
     text-align: right;
+    margin-left: 150px;
 }
-.t-num{
+
+.t-num {
     width: 80px;
     text-align: center;
+    margin-left: 20px;
 }
-.t-sum{
+
+.t-sum {
     width: 100px;
-    padding-right: 40px;
+    padding-right: 30px;
     text-align: right;
+    margin-left: 10px;
 }
-.t-action{
+
+.t-action {
     width: 75px;
 }
 .shop{
